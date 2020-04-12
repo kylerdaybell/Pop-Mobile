@@ -23,12 +23,12 @@ const Login = () => {
 
     const UserLogin = async() =>{
         let apiservice = new APIUserService()
-        let user = new User(0,username,password,"admin")
+        let user = new User(0,username.toLowerCase(),password,"admin")
         let token = await apiservice.Login(user);
         if(token){
             AsyncStorage.setItem("Token", token.key);
             setThisToken(token);
-            return token;
+            Actions.home();
         }else{
             setThisToken(new Token(""));
             return new Token("");
@@ -46,22 +46,25 @@ const Login = () => {
         </TouchableOpacity>
         
         <TextInput
+        autoCompleteType={"email"}
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
         onChangeText={text => setUsername(text)}
+        placeholder={"Email"}
         />
         
         <TextInput
+        autoCompleteType={"password"}
         secureTextEntry={true}
         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
         onChangeText={text => setPassword(text)}
+        placeholder={"Password"}
         />
         <Button
         onPress={UserLogin}
-        title="Learn More"
+        title="Login"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
         />
-        <Text>{ThisToken.key}</Text>
        </>
    )
 }

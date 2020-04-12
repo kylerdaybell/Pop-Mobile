@@ -1,0 +1,17 @@
+{
+  "name": "popapp",
+  "displayName": "popapp",
+  "expo": {
+    "name": "popapp",
+    "slug": "popapp",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

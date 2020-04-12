@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://j3-id6.anonymous.popapp.exp.direct",
+  "packagerNgrokUrl": "https://packager.j3-id6.anonymous.popapp.exp.direct",
+  "ngrokPid": 12585
 }

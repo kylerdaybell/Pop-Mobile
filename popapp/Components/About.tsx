@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import APIUserService from '../Services/APIServices/APIUserService';
 import Token from '../Models/TokenModel';
 import User from '../Models/UserModel';
+import Post from '../Models/PostModel';
 
 const About = () => {
 

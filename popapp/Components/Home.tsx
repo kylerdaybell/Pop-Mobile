@@ -1,15 +1,42 @@
 import React from 'react'
-import { TouchableOpacity, Text } from 'react-native';
+import { Text, Button, TouchableOpacity, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import styles from '../Styles/MainStyles'
+import pop from '../Assets/pop.jpg'
 
 const Home = () => {
-   const goToAbout = () => {
-      Actions.about()
+   const goToLogin = () => {
+      Actions.Login()
    }
+   const goToRegister = () => {
+      Actions.Register()
+   }
+
    return (
-      <TouchableOpacity style = {{ margin: 128 }} onPress = {goToAbout}>
-         <Text>This is HOME!</Text>
-      </TouchableOpacity>
+      <>
+      <Text
+      style={styles.title}
+      adjustsFontSizeToFit={true}
+      
+      >POP mobile</Text>
+      <View style={{flexDirection:"row"}}>
+         <TouchableOpacity
+         onPress={goToLogin}
+         style={styles.button}
+         accessibilityLabel="Login about this purple button"
+         >
+            <Text style={styles.buttontext}>  Login  </Text>
+         </TouchableOpacity>
+
+         <TouchableOpacity
+         onPress={goToRegister}
+         style={styles.button}
+         accessibilityLabel="Register about this purple button"
+         >
+            <Text style={styles.buttontext}>Register</Text>
+         </TouchableOpacity>
+      </View>
+      </>
    )
 }
 export default Home

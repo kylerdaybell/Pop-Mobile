@@ -2,27 +2,31 @@ import React, { useEffect, useState, FunctionComponent } from "react";
 import { TouchableOpacity, Text, AsyncStorage, TextInput, Button } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import APIUserService from '../Services/APIServices/APIUserService';
-import APIPostService from '../Services/APIServices/APIPostService';
 import Token from '../Models/TokenModel';
 import User from '../Models/UserModel';
 
 
-const Login = () => {
+const Register = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [secondpassword, setSecondPassword] = useState("")
+    const [Registered, setRegistered] = useState("");
 
 
-    const UserLogin = async() =>{
+    const UserRegister = async() =>{
         let apiservice = new APIUserService()
-        let user = new User(0,username.toLowerCase(),password,"admin")
-        let token = await apiservice.Login(user);
-        if(token){
-            AsyncStorage.setItem("Token", token.key);
-            Actions.CreatePost();
+
+        if(password == secondpassword){
+            let user = new User(0,username.toLowerCase(),password,"admin")
+            if(await apiservice.Register(user)){
+                Actions.home()
+            } else 
+            {
+                setRegistered("you are not registered")
+            }
         }
     }
-    
 
    return (
        <>
@@ -40,13 +44,22 @@ const Login = () => {
         onChangeText={text => setPassword(text)}
         placeholder={"Password"}
         />
+
+        <TextInput
+        autoCompleteType={"password"}
+        secureTextEntry={true}
+        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+        onChangeText={text => setSecondPassword(text)}
+        placeholder={"Repeat Password"}
+        />
+
         <Button
-        onPress={UserLogin}
+        onPress={UserRegister}
         title="Login"
         color="#841584"
-        accessibilityLabel="Login about this purple button"
+        accessibilityLabel="Learn more about this purple button"
         />
        </>
    )
 }
-export default Login
+export default Register
